@@ -1,4 +1,16 @@
-<h1>Here are your orders:</h1>
+<h3>New order:</h3>
+
+<%= simple_form_for @order do |f| %>
+  <%= f.input :weight %>
+  <%= f.input :length %>
+  <%= f.input :width %>
+  <%= f.input :height %>
+  <%= f.input :origin %>
+  <%= f.input :destination %>
+  <%= f.button :submit %>
+<% end %>
+
+<h2>Your orders:</h2>
 
 <% @orders.each do |order| %>
 <p>weight: <%= order.weight %></p>

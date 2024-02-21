@@ -8,9 +8,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get '/orders', to: 'orders#index', as: 'orders'
+  post '/orders', to: 'orders#create'
 
-  # Route for creating a new order
-  # post '/orders', to: 'orders#create'
-  # Defines the root path route ("/")
   # root "posts#index"
 end
