@@ -12,7 +12,6 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.price = price
     @order.user = current_user
-    raise
     if @order.save
       redirect_to orders_path, notice: 'Order was successfully created.'
     else
@@ -20,7 +19,6 @@ class OrdersController < ApplicationController
       flash.now[:alert] = 'Failed to create order'
       render :index
     end
-
   end
 
   private

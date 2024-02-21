@@ -1,17 +1,46 @@
-<h3>New order:</h3>
+<div class="d-flex container">
+  <div>
+    <h3>New order:</h3>
+    <%= simple_form_for @order do |f| %>
+      <%= f.input :weight %>
+      <%= f.input :length %>
+      <%= f.input :width %>
+      <%= f.input :height %>
+      <%= f.input :origin %>
+      <%= f.input :destination %>
+      <%= f.button :submit, class: "btn-primary" %>
+    <% end %>
+  </div>
 
-<%= simple_form_for @order do |f| %>
-  <%= f.input :weight %>
-  <%= f.input :length %>
-  <%= f.input :width %>
-  <%= f.input :height %>
-  <%= f.input :origin %>
-  <%= f.input :destination %>
-  <%= f.button :submit %>
-<% end %>
+  <div class="flex-grow-1">
+    <h1>Your orders:</h1>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Origin</th>
+          <th>Destination</th>
+          <th>Weight</th>
+          <th>Length</th>
+          <th>Width</th>
+          <th>Height</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.origin %></td>
+            <td><%= order.destination %></td>
+            <td><%= order.weight %></td>
+            <td><%= order.length %></td>
+            <td><%= order.width %></td>
+            <td><%= order.height %></td>
+            <td>₽<%= order.price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<h2>Your orders:</h2>
 
-<% @orders.each do |order| %>
-<p>weight: <%= order.weight %></p>
-<% end %>
+</div>
