@@ -7,4 +7,8 @@ class Order < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     %w[user]
   end
+
+  validates :origin, :destination, presence: true
+  validates :weight, :length, :width, :height, numericality: { greater_than: 0 }
+  validates :weight, :length, :width, :height, presence: true
 end

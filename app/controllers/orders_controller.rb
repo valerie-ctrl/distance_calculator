@@ -8,8 +8,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    price = calculate_price(order_params[:origin], order_params[:destination], order_params[:weight].to_f, order_params[:length].to_f, order_params[:width].to_f, order_params[:height].to_f)
     @order = Order.new(order_params)
+    price = calculate_price(order_params[:origin], order_params[:destination], order_params[:weight].to_f, order_params[:length].to_f, order_params[:width].to_f, order_params[:height].to_f)
     @order.price = price
     @order.user = current_user
     if @order.save
@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
     else
       @orders = Order.all
       flash.now[:alert] = 'Failed to create order'
-      render :index
+      render :index, status: :unprocessable_entity
     end
   end
 
